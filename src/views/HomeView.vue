@@ -55,13 +55,27 @@
 </script>
 
 <template>
+
   <main>
+
     <div>
       <h1 class="display-5 text-center">Type what you would <br />like to search the API for.</h1>
     </div>
     <form class="col text-center" id="callAPIform">
       <input type="string" id="userInput" placeholder="Type your system here...">
-      <button @click="callAPI" class="btn btn-primary ">Call API</button>
+      <button @click="callAPI" class="btn btn-primary" type="button">Call API</button>
+      <!-- new input and button here -->
+      <!-- <b-input-group prepend="Username" class="mt-3">
+        <b-form-input type="string" id="userInput" placeholder="Type your system here..."></b-form-input>
+        <b-input-group-append>
+          <b-button variant="outline-success" @click="callAPI" type="button">Button</b-button>
+        </b-input-group-append>
+      </b-input-group> -->
+
+
+
+
+
       <br>
       <div v-for="option in options" class="form-check-inline m-1">
         <input type="checkbox" v-model="selected" :key="option.value" :value="option.value"
@@ -98,33 +112,32 @@
     border: 0px 0px 2px 0px solid black;
     color: rgb(34, 114, 115);
     appearance: none;
-    
-    
+
+
     background: none;
   }
-  
-input {
-    
+
+  input {
+
 
     display: inline;
-    
+
     max-width: 400px;
     margin: 0 auto;
     font-size: 1.5rem;
-    
-}
 
-input:not([type='submit']) {
+  }
+
+  input:not([type='submit']) {
     opacity: 0.8;
     transition: 0.4s;
-}
+  }
 
-input:focus:not([type='submit']){
+  input:focus:not([type='submit']) {
     opacity: 1;
-}
+  }
 
-input::placeholder{
+  input::placeholder {
     color: inherit;
-}
-  
+  }
 </style>
