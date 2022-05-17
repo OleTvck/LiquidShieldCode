@@ -1,9 +1,6 @@
 <script setup>
-  import {
-    ref
-  } from "vue";
+  import { ref } from "vue";
   import axios from "axios"
-
 
   let options = [{
       text: 'Windows',
@@ -30,11 +27,7 @@
       value: 'Connect Wise'
     }
   ]
-
-
-
   const result = ref({})
-
   const callAPI = () => {
     const userInput = document.getElementById("userInput").value
     axios
@@ -58,30 +51,29 @@
 
   <main>
 
-    <div>
-      <h1 class="display-5 text-center">Type what you would <br />like to search the API for.</h1>
-    </div>
-    <form class="col text-center" id="callAPIform">
-      <input type="string" id="userInput" placeholder="Type your system here...">
-      <button @click="callAPI" class="btn btn-primary" type="button">Call API</button>
-      <!-- new input and button here -->
-      <!-- <b-input-group prepend="Username" class="mt-3">
-        <b-form-input type="string" id="userInput" placeholder="Type your system here..."></b-form-input>
-        <b-input-group-append>
-          <b-button variant="outline-success" @click="callAPI" type="button">Button</b-button>
-        </b-input-group-append>
-      </b-input-group> -->
-
-
-
-
-
+    <form class="" id="callAPIform">
+      <!-- This is the top row -->
+      <div class="row">
+        <h1 class="display-5">Type what you would <br />like to search the API for.</h1>
+      </div>
+      <!-- This is the middle row -->
+      <div class="row ">
+        <div class="input-group d-flex justify-content-center">
+          <input type="text" id="userInput" placeholder="Type your system here to search..."
+            class="form-control text-center">
+          <button @click="callAPI" class="btn btn-primary" type="button" id="button-addon-2">Call API</button>
+        </div>
+      </div>
+      <!-- This is the bottom row -->
       <br>
-      <div v-for="option in options" class="form-check-inline m-1">
+      <div v-for="option in options" class="form-check-inline p-1">
         <input type="checkbox" v-model="selected" :key="option.value" :value="option.value"
-          :aria-describedby="ariaDescribedby" name="flavour-4a" class="" inline />
+          :aria-describedby="ariaDescribedby" name="flavour-4a" class="m-1" inline />
         <label class="ml-1" :for="option.value" inline> {{ option.value }} </label>
       </div>
+
+
+    <!-- data will pop up in the divs below -->
 
 
       <div class="" v-for="cve, index in result.CVE_Items" :key="`ID-${index}`">
@@ -123,7 +115,7 @@
     display: inline;
 
     max-width: 400px;
-    margin: 0 auto;
+
     font-size: 1.5rem;
 
   }

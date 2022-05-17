@@ -1,146 +1,141 @@
 <template>
     <main class="login">
+        <sections class="row">
+            <div class="dflex justify-content-center">
+                <img class="img-thumbnail" src="src/assets/Site Icon copy.png" alt="">
+                <br>
+                <h1>Welcome to Liquid Shield</h1>
+            </div>
+        </sections>
         <sections class="forms">
             <form class="register" @submit.prevent="register">
                 <h2>Register</h2>
-                <input 
-                type="email" 
-                placeholder="Email Address"
-                v-model="register_form.email" />
-                <input 
-                type="password"
-                placeholder="Password"
-                v-model="register_form.password" />
-                <input 
-                type="submit"
-                value="Register">
+                <input type="email" placeholder="Email Address" v-model="register_form.email" />
+                <input type="password" placeholder="Password" v-model="register_form.password" />
+                <input type="submit" value="Register">
             </form>
             <form class="login" @submit.prevent="login">
                 <h2>Login</h2>
-                <input 
-                type="email" 
-                placeholder="Email Address"
-                v-model="login_form.email" />
-                <input 
-                type="password"
-                placeholder="Password"
-                v-model="login_form.password" />
-                <input 
-                type="submit"
-                value="Login">
+                <input type="email" placeholder="Email Address" v-model="login_form.email" />
+                <input type="password" placeholder="Password" v-model="login_form.password" />
+                <input type="submit" value="Login">
             </form>
         </sections>
     </main>
 </template>
 
 <script>
-import { useStore } from 'vuex';
-import { ref } from 'vue';
+    import {
+        useStore
+    } from 'vuex';
+    import {
+        ref
+    } from 'vue';
 
-export default {
-    setup () {
-        const login_form = ref({});
-        const register_form = ref({});
-        const store = useStore();
-        const login =  () => {
-           store.dispatch('login', login_form.value);
-       }
+    export default {
+        setup() {
+            const login_form = ref({});
+            const register_form = ref({});
+            const store = useStore();
+            const login = () => {
+                store.dispatch('login', login_form.value);
+            }
 
-       const register = () => {
-           store.dispatch('register', register_form.value);
-       }
+            const register = () => {
+                store.dispatch('register', register_form.value);
+            }
 
-        return {
-            login_form,
-            register_form,
-            login,
-            register
+            return {
+                login_form,
+                register_form,
+                login,
+                register
+            }
         }
     }
-}
-
 </script>
 
 <style scoped>
-.forms {
-    display: flex;
-    min-height: 100vh;
-}
+    .forms {
+        display: flex;
+        min-height: 100vh;
+    }
 
-form {
-    flex: 1 1 0%;
-    padding: 8rem 1rem 1 rem;
-}
+    form {
+        flex: 1 1 0%;
+        padding: 8rem 1rem 1 rem;
+    }
 
-form.register {
-    color: white;
-    background-color: rgb(0, 240, 242);
-    background-image: linear-gradient(
-        to bottom right,
-        rgb(0, 240, 242) 0%,
-        rgb(0, 114, 115) 100%
+    form.register {
+        color: white;
+        background-color: rgb(0, 240, 242);
+        background-image: linear-gradient(to bottom right,
+                rgb(0, 240, 242) 0%,
+                rgb(0, 114, 115) 100%);
 
-    );
+    }
 
-}
-h2 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-}
-input {
-    appearance: none;
-    border: none;
-    outline: none;
-    background: none;
+    h2 {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
 
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    padding: 0.5rem 0rem;
-}
+    input {
+        appearance: none;
+        border: none;
+        outline: none;
+        background: none;
 
-input:not([type='submit']) {
-    opacity: 0.8;
-    transition: 0.4s;
-}
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 0.5rem 0rem;
+    }
 
-input:focus:not([type='submit']){
-    opacity: 1;
-}
+    input:not([type='submit']) {
+        opacity: 0.8;
+        transition: 0.4s;
+    }
 
-input::placeholder{
-    color: inherit;
-}
-form.register input:not([type='submit']) {
-    color: white;
-    border-bottom: 2px solid #fff;
-}
-form.login input:not([type='submit']) {
-    color: #2c3e50;
-    border-bottom: 2px solid #2c3e50;
-}
+    input:focus:not([type='submit']) {
+        opacity: 1;
+    }
 
-form.login input[type='submit'] {
-    background-color: rgb(0, 240, 242);
-    color: white;
-    font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    text-transform: uppercase;
-}
+    input::placeholder {
+        color: inherit;
+    }
 
-form.register input[type='submit'] {
-    background-color: #fff;
-    color: rgb(0, 240, 242);
-    font-weight: 700;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    text-transform: uppercase;
-}
+    form.register input:not([type='submit']) {
+        color: white;
+        border-bottom: 2px solid #fff;
+    }
+
+    form.login input:not([type='submit']) {
+        color: #2c3e50;
+        border-bottom: 2px solid #2c3e50;
+    }
+
+    form.login input[type='submit'] {
+        background-color: rgb(0, 240, 242);
+        color: white;
+        font-weight: 700;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    form.register input[type='submit'] {
+        background-color: #fff;
+        color: rgb(0, 240, 242);
+        font-weight: 700;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
 </style>
