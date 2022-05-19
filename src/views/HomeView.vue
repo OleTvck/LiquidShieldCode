@@ -1,5 +1,13 @@
 <script setup>
-  import { ref } from "vue";
+  import {
+    ref
+  } from "vue";
+  import {
+    reactive
+  } from 'vue'
+
+
+
   import axios from "axios"
 
   let options = [{
@@ -45,6 +53,19 @@
     console.log(userInput)
 
   }
+
+
+
+  
+  const msg = ref('Hello World!')
+  const systemsArray = ref([])
+
+  function appendArray() {
+    systemsArray.value = Array.from(new Set([
+      ...systemsArray.value,
+      ...msg.value.split("\n")
+    ]))
+  }
 </script>
 
 <template>
@@ -52,11 +73,11 @@
   <main>
 
     <form class="" id="callAPIform">
-      <!-- This is the top row -->
+      <!-- This is the Title row -->
       <div class="row">
         <h1 class="display-5">Type what you would <br />like to search the API for.</h1>
       </div>
-      <!-- This is the middle row -->
+      <!-- This is the CallAPI Input row -->
       <div class="row ">
         <div class="input-group d-flex justify-content-center">
           <input type="text" id="userInput" placeholder="Type your system here to search..."
@@ -64,7 +85,7 @@
           <button @click="callAPI" class="btn btn-primary" type="button" id="button-addon-2">Call API</button>
         </div>
       </div>
-      <!-- This is the bottom row -->
+      <!-- This is the Checkbox row -->
       <br>
       <div v-for="option in options" class="form-check-inline p-1">
         <input type="checkbox" v-model="selected" :key="option.value" :value="option.value"
@@ -72,8 +93,21 @@
         <label class="ml-1" :for="option.value" inline> {{ option.value }} </label>
       </div>
 
+      <!-- add systems to users here -->
+      <div class="row d-flex justify-content-center">
+        <div class="input-group " style="width: 40%">
+          <span class="input-group-text text-center">Add your systems <br>here separated <br>by a new line.</span>
+          <textarea v-model="msg" class="form-control text-center" aria-label="With textarea"></textarea>
+          <button class="btn btn-outline-secondary" type="button" @click="appendArray()">Add System</button>
+        </div>
+      </div>
+      <p v-for="system, index in systemsArray" v-bind:key="system">
+        <button>
+          {{ system }}
+        </button>
+      </p>
 
-    <!-- data will pop up in the divs below -->
+      <!-- data will pop up in the divs below -->
 
 
       <div class="" v-for="cve, index in result.CVE_Items" :key="`ID-${index}`">

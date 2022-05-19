@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyBySt37VZsiDztGTo-2fudyJlauaj9j2g4",
   authDomain: "liquid-shield.firebaseapp.com",
@@ -16,5 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const analytics = getAnalytics(app);
+
+
 
 export { auth }
